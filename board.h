@@ -27,7 +27,7 @@ struct Point {
   int m_x{};
   int m_y{};
 
-  Point(int x, int y) : m_x{x}, m_y{y} {};
+  Point(int x = 0, int y = 0) : m_x{x}, m_y{y} {};
   Point getAdjacentPoint(const Direction &d);
   bool isValid();
   friend bool operator==(const Point &a, const Point &b);
@@ -36,7 +36,7 @@ struct Point {
 
 class Board {
   Tile m_array[g_rows][g_cols];
-  Point m_empty{g_rows - 1, g_cols - 1};
+  Point m_empty;
 
 public:
   Board();

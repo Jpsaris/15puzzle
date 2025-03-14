@@ -30,8 +30,8 @@ bool operator==(const Point &a, const Point &b) {
 }
 
 bool operator!=(const Point &a, const Point &b) { return !(operator==(a, b)); }
-
 Board::Board() {
+  Point m_empty{};
   std::vector<int> intList(16);
   std::iota(intList.begin(), intList.end(), 1);
   std::random_device rd;
@@ -40,6 +40,10 @@ Board::Board() {
   for (int i{1}; i < 16; ++i) {
     int row{i / 4};
     int col{i % 4};
+    int value = intList[i];
+    if (value == 0){
+      m_empty = {row, col};
+    }
     m_array[row][col - 1] = Tile(intList[i]);
   }
 }
